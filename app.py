@@ -3,6 +3,10 @@ from functions import utilities as utils
 
 app = Flask(__name__)
 
+@app.route("/")
+def root():
+    return jsonify({"Message": "Welcome to the Scheduling API!"})
+
 # Retrieve raw event data from the database
 @app.route('/api/data/<event>', methods = ['GET']) #get event
 def get_event(event):
