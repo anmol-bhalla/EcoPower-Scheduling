@@ -27,18 +27,18 @@ def edit_event():
 
 # Retrieve raw audit data from the database
 @app.route('/api/data/<event>/audit', methods = ['GET']) #get audit
-def get_event(audit):
+def get_audit(audit):
     # TO DO: query the database for the audit data
     return jsonify({'audit': audit})
 
 # Remove raw audit data from the database
 @app.route('/api/data/<event>/audit', methods = ['DELETE']) #delete audit
-def delete_event(audit):
+def delete_audit(audit):
     # TO DO: delete audit data
     return jsonify({'audit': audit})
 
 @app.route('/api/data/<event>/audit', methods = ['POST']) #create audit
-def create_event():
+def create_audit():
     # TO DO: create audit data
     return jsonify({'audit': audit})
 
