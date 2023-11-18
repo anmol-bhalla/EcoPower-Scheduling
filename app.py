@@ -1,8 +1,5 @@
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-import os
-
+from flask import Flask, jsonify
+from functions import utilities as utils
 
 app = Flask(__name__)
 
@@ -72,6 +69,10 @@ def create_appointment():
     db.session.add(appointment)
     db.session.commit()
     return jsonify({'message': 'Appointment created successfully!'})
+=======
+@app.route("/")
+def root():
+    return jsonify({"Message": "Welcome to the Scheduling API!"})
 
 # Retrieve raw event data from the database
 @app.route('/api/data/<event>', methods = ['GET']) #get event
@@ -86,12 +87,12 @@ def delete_event(event):
     return jsonify({'event': event})
 
 @app.route('/api/data/<event>', methods = ['POST']) #create event
-def create_event(event):
+def create_event():
     # TO DO: create event data
     return jsonify({'event': event})
 
 @app.route('/api/data/<event>', methods = ['PUT']) #update an event
-def edit_event(event):
+def edit_event():
     # TO DO: edit event data
     return jsonify({'event': event})
 
@@ -108,9 +109,9 @@ def delete_audit(audit):
     return jsonify({'audit': audit})
 
 @app.route('/api/data/<event>/audit', methods = ['POST']) #create audit
-def create_audit(event):
+def create_audit():
     # TO DO: create audit data
-    return jsonify({'event': event})
+    return jsonify({'audit': audit})
 
 # Retrieve user information from User Registration microservice
 @app.route('/api/users/<username>', methods = ['GET'])
@@ -124,8 +125,3 @@ def get_user(username):
 def get_user_devices(username, deviceid):
     # TO DO: get list of user devices
     return jsonify({'username': username, 'deviceid': deviceid})
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.run(host="0.0.0.0", port=9000)
