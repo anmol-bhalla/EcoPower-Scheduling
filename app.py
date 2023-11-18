@@ -62,6 +62,7 @@ def get_appointments(t_id):
             'confirmation_status': appointments.confirmation_status
         
         })
+    
     else:
         return jsonify({"Message": "No appointments found!"})
     
